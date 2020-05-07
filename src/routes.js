@@ -33,43 +33,43 @@ var routes = [
   },
   {
     path: "/icons",
-    name: "Icons",
+    name: "Chatbot",
     icon: "ni ni-planet text-blue",
     component: Icons,
     layout: "/admin"
   },
   {
-    path: "/maps",
-    name: "Maps",
-    icon: "ni ni-pin-3 text-orange",
-    component: Maps,
-    layout: "/admin"
-  },
-  {
     path: "/user-profile",
-    name: "User Profile",
+    name: "Clients",
     icon: "ni ni-single-02 text-yellow",
     component: Profile,
     layout: "/admin"
   },
   {
     path: "/tables",
-    name: "Tables",
+    name: "Products",
     icon: "ni ni-bullet-list-67 text-red",
     component: Tables,
     layout: "/admin"
   },
   {
+    path: "/maps",
+    name: "Payments",
+    icon: "ni ni-shop text-orange",
+    component: Maps,
+    layout: "/admin"
+  },
+  {
     path: "/login",
-    name: "Login",
-    icon: "ni ni-key-25 text-info",
+    name: "Safety",
+    icon: "ni ni-credit-card text-info",
     component: Login,
     layout: "/auth"
   },
   {
     path: "/register",
-    name: "Register",
-    icon: "ni ni-circle-08 text-pink",
+    name: "Sign out",
+    icon: "ni ni-button-power text-pink",
     component: Register,
     layout: "/auth"
   }

@@ -157,7 +157,7 @@ class Index extends React.Component {
                 <CardHeader className="border-0">
                   <Row className="align-items-center">
                     <div className="col">
-                      <h3 className="mb-0">Page visits</h3>
+                      <h3 className="mb-0">Hottest products</h3>
                     </div>
                     <div className="col text-right">
                       <Button
@@ -174,15 +174,15 @@ class Index extends React.Component {
                 <Table className="align-items-center table-flush" responsive>
                   <thead className="thead-light">
                     <tr>
-                      <th scope="col">Page name</th>
-                      <th scope="col">Visitors</th>
-                      <th scope="col">Unique users</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Sales</th>
+                      <th scope="col">Watchers only</th>
                       <th scope="col">Bounce rate</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <th scope="row">/argon/</th>
+                      <th scope="row">iPad Pro 2020 128Gb gold</th>
                       <td>4,569</td>
                       <td>340</td>
                       <td>
@@ -191,7 +191,7 @@ class Index extends React.Component {
                       </td>
                     </tr>
                     <tr>
-                      <th scope="row">/argon/index.html</th>
+                      <th scope="row">IKEA lamp LIDARE</th>
                       <td>3,985</td>
                       <td>319</td>
                       <td>
@@ -200,7 +200,7 @@ class Index extends React.Component {
                       </td>
                     </tr>
                     <tr>
-                      <th scope="row">/argon/charts.html</th>
+                      <th scope="row">UE Boom bluetooth speaker</th>
                       <td>3,513</td>
                       <td>294</td>
                       <td>
@@ -209,7 +209,7 @@ class Index extends React.Component {
                       </td>
                     </tr>
                     <tr>
-                      <th scope="row">/argon/tables.html</th>
+                      <th scope="row">iPhone 11 64Gb</th>
                       <td>2,050</td>
                       <td>147</td>
                       <td>
@@ -218,7 +218,7 @@ class Index extends React.Component {
                       </td>
                     </tr>
                     <tr>
-                      <th scope="row">/argon/profile.html</th>
+                      <th scope="row">ANKER External battery 20,000 mAh</th>
                       <td>1,795</td>
                       <td>190</td>
                       <td>
