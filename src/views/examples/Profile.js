@@ -17,6 +17,8 @@
 */
 import React, { useEffect, useState } from "react";
 import DragNDrop from '../../components/Product/DragNDrop.js';
+import Subcategories from '../../components/Product/Subcategories.js';
+import getCategories from '../../components/Product/categories.js'
 
 // reactstrap components
 import {
@@ -35,137 +37,37 @@ import {
 import UserHeader from "components/Headers/UserHeader.js";
 
 
-const categories = {
-  "tablets": {
-    "color": "grey",
-    "accessories": {
-      "keyboardCompatible": true,
-      "trackpadComptatible": true,
-    },
-    "os": {
-      "type": "iOS",
-      "version": 13
-    },
-    "storage": {
-      "unit": "Gb",
-      "value": 256
-    }
-  },
+const categories = getCategories()
 
-  "cars": {
-    "color": "grey",
-    "motor": "electric",
-    "constructor": "Tesla",
-    "features": {
-      "GPS": true,
-      "self-driving": true
-    }
-  }
-};
-
-
-function SelectCategory(){
+function SelectCategory() {
   let options = [];
 
-  for(const [key, value] of Object.entries(categories)){
+  for (const [key, value] of Object.entries(categories)) {
     options.push(<option value={key}>{key}</option>)
-  }        
-    return( options );
-
-}
-
-
-
-class Subcategories extends React.Component {
-  constructor(props) {
-    super(props);
-    
-    this.state = {
-        options: []
-    };
-
   }
-
-
-  resetState = () => {
-    this.setState({
-      options: []
-    })
-  }
-
-  render() {
-    console.log(this.props.category);
-
-  if(this.props.category in categories){
-  for(const [key, value] of Object.entries(categories[this.props.category])){
-    this.state.options.push(
-      <Row key={this.props.category+"_"+key}>
-      <Col lg="4">
-        <FormGroup>
-          <label
-            className="form-control-label"
-            htmlFor="input-city"
-          >
-            Key
-          </label>
-          <Input
-            className="form-control-alternative"
-            defaultValue={key}
-            id="input-city"
-            placeholder="value"
-            type="text"
-          />
-        </FormGroup>
-      </Col>
-      <Col lg="4">
-        <FormGroup>
-          <label
-            className="form-control-label"
-            htmlFor="input-country"
-          >
-            Value
-          </label>
-          <Input
-            className="form-control-alternative"
-            defaultValue={value}
-            id="input-country"
-            placeholder="value"
-            type="text"
-          />
-        </FormGroup>
-      </Col>
-      
-    </Row>
-
-    )
-  }        
-}
-
-
-    return( <React.Fragment>
-{ this.state.options }
-    </React.Fragment>  );
+  return (options);
 
 }
-}
+
+
 
 
 class Profile extends React.Component {
 
- constructor (props) {
-        super(props);
-        this.state = {sub: 'tablets'};
-        this.changeCategory = this.changeCategory.bind(this);
-        this.subcategoryElement = React.createRef();
-    }
+  constructor(props) {
+    super(props);
+    this.state = { sub: 'tablets' };
+    this.changeCategory = this.changeCategory.bind(this);
+    this.subcategoryElement = React.createRef();
+  }
 
-    changeCategory(event) {
-        // parent class change handler is always called with field name and value
-        this.subcategoryElement.current.resetState()
-        this.setState({sub: event.target.value});
-        console.log("set : "+event.target.value);
+  changeCategory(event) {
+    // parent class change handler is always called with field name and value
+    this.subcategoryElement.current.resetState()
+    this.setState({ sub: event.target.value });
+    console.log("set : " + event.target.value);
 
-    }
+  }
 
 
   render() {
@@ -273,13 +175,13 @@ class Profile extends React.Component {
                               onChange={this.changeCategory}
                               value={this.state.sub}
                             >
-                            <SelectCategory></SelectCategory>
+                              <SelectCategory></SelectCategory>
                             </select>
                           </FormGroup>
                         </Col>
                       </Row>
-                      <Subcategories ref={ this.subcategoryElement } category={ this.state.sub }></Subcategories>
-                    
+                      <Subcategories ref={this.subcategoryElement} category={this.state.sub}></Subcategories>
+
                     </div>
                     <hr className="my-4" />
                     {/* Description */}
