@@ -185,19 +185,100 @@ class Profile extends React.Component {
                     </div>
                     <hr className="my-4" />
                     {/* Description */}
-                    <h6 className="heading-small text-muted mb-4">About me</h6>
+                    <h6 className="heading-small text-muted mb-4">Pricing</h6>
                     <div className="pl-lg-4">
-                      <FormGroup>
-                        <label>About Me</label>
-                        <Input
-                          className="form-control-alternative"
-                          placeholder="A few words about you ..."
-                          rows="4"
-                          defaultValue="A beautiful Dashboard for Bootstrap 4. It is Free and
-                          Open Source."
-                          type="textarea"
-                        />
-                      </FormGroup>
+                    <Row>
+                        <Col md="6">
+                          <FormGroup>
+                            <label
+                              className="form-control-label"
+                              htmlFor="category"
+                            >
+                              Pricing model
+                            </label>
+                            <select className="custom-select form-control-alternative"
+                              id="pricing_model"
+                              type="text"
+                            >
+                             <option value="standard">Standard pricing</option>
+                             <option value="plan">Plan pricing</option>
+                             <option value="scaled">Scaled pricing</option>
+                            </select>
+                          </FormGroup>
+                        </Col>
+                      </Row>
+
+
+                      <Row>
+                        <Col md="6">
+                          <FormGroup>
+                            <label
+                              className="form-control-label"
+                              htmlFor="category"
+                            >
+                              Price
+                            </label>
+                            <Input
+                              className="form-control-alternative"
+                              id="input-first-name"
+                              placeholder="23.87"
+                              type="text"
+                            />
+                          </FormGroup>
+                        </Col>
+                        <Col md="6">
+                          <FormGroup>
+                            <label
+                              className="form-control-label"
+                              htmlFor="category"
+                            >
+                              Currency
+                            </label>
+                            <select className="custom-select form-control-alternative"
+                              id="pricing_model"
+                              type="text"
+                            >
+                             <option value="USD">$ USD</option>
+                             <option value="EUR">€ EUR</option>
+                             <option value="GBP">£ GBP</option>
+                            </select>
+                          </FormGroup>
+                        </Col>
+                      </Row>
+                      <Row>
+                      <Col md="6">
+                          <FormGroup>
+                            <label
+                              className="form-control-label"
+                              htmlFor="category"
+                            >
+                              Billing
+                            </label>
+                            <select className="custom-select form-control-alternative"
+                              id="billing"
+                              type="text"
+                            >
+                             <option value="once">One time</option>
+                             <option value="recuring">Recuring</option>
+                            </select>
+                          </FormGroup>
+                        </Col>
+                        </Row>
+
+
+                      <Row>
+                        <Col sm="4"></Col>
+                        <Col sm="4">
+                        <Button
+                        color="primary"
+                        href="#pablo"
+                        style={{width: '100%'}}
+                        size="xl">
+                        Save
+                      </Button>
+                      
+                        </Col>
+                      </Row>
                     </div>
                   </Form>
                 </CardBody>

@@ -139,9 +139,11 @@ function ProductList() {
     listItems.push(
 
       <tr>
+         <td>26-10-2020</td>
         <th scope="row">
           <Media className="align-items-center">
-            <a
+            {
+              /*<a
               className="avatar rounded-circle mr-3"
               href="#pablo"
               onClick={e => e.preventDefault()}
@@ -151,6 +153,7 @@ function ProductList() {
                 src={imgsrc}
               />
             </a>
+            */}
             <Media>
               <span className="mb-0 text-sm">
                 {element.name}
@@ -177,7 +180,7 @@ function ProductList() {
                 <img
                   alt="..."
                   className="rounded-circle"
-                  src={require("assets/img/theme/team-1-800x800.jpg")}
+                  src={require("assets/img/theme/vue.jpg")}
                 />
               </a>
               <UncontrolledTooltip
@@ -195,7 +198,7 @@ function ProductList() {
                 <img
                   alt="..."
                   className="rounded-circle"
-                  src={require("assets/img/theme/team-2-800x800.jpg")}
+                  src={require("assets/img/theme/angular.jpg")}
                 />
               </a>
               <UncontrolledTooltip
@@ -213,7 +216,7 @@ function ProductList() {
                 <img
                   alt="..."
                   className="rounded-circle"
-                  src={require("assets/img/theme/team-3-800x800.jpg")}
+                  src={require("assets/img/theme/sketch.jpg")}
                 />
               </a>
               <UncontrolledTooltip
@@ -222,41 +225,13 @@ function ProductList() {
               >
                 Alexander Smith
                           </UncontrolledTooltip>
-              <a
-                className="avatar avatar-sm"
-                href="#pablo"
-                id="tooltip996637554"
-                onClick={e => e.preventDefault()}
-              >
-                <img
-                  alt="..."
-                  className="rounded-circle"
-                  src={require("assets/img/theme/team-4-800x800.jpg")}
-                />
-              </a>
-              <UncontrolledTooltip
-                delay={0}
-                target="tooltip996637554"
-              >
-                Jessica Doe
-                          </UncontrolledTooltip>
+
             </div>
 
           </td>
             : ''
         }
-        <td>
-          <div className="d-flex align-items-center">
-            <span className="mr-2">{element.inventory.type == 'finite' ? element.inventory.quantity : '∞'}</span>
-            <div>
-              <Progress
-                max="100"
-                value={stockLevel}
-                barClassName={stockLevelStatus}
-              />
-            </div>
-          </div>
-        </td>
+      
         <td className="text-right">
           <UncontrolledDropdown>
             <DropdownToggle
@@ -301,7 +276,7 @@ function ProductList() {
 
 const darkMode = false;
 
-class Tables extends React.Component {
+class Orders extends React.Component {
   render() {
     return (
       <>
@@ -313,17 +288,17 @@ class Tables extends React.Component {
             <div className="col">
               <Card className={!darkMode ? "shadow" : "bg-default shadow"}>
                 <CardHeader className={!darkMode ? "border-0" : "bg-transparent border-0"}>
-                  <h3 className={!darkMode ? "mb-0" : "text-white mb-0"}>Products</h3>
+                  <h3 className={!darkMode ? "mb-0" : "text-white mb-0"}>Orders</h3>
                 </CardHeader>
                 <Table className={!darkMode ? "align-items-center table-flush" : "align-items-center table-dark table-flush"}
                   responsive>
                   <thead className={!darkMode ? "thead-light" : "thead-dark"}>
                     <tr>
-                      <th scope="col">Product name</th>
+                     <th scope="col">Date</th>
+                      <th scope="col">Order</th>
                       <th scope="col">Price</th>
-                      <th scope="col">Availablity</th>
-                      <th scope="col"></th>
-                      <th scope="col">Stock</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Products</th>
                       <th scope="col" />
                     </tr>
                   </thead>
@@ -387,38 +362,10 @@ class Tables extends React.Component {
               </Card>
             </div>
           </Row>
-          {/* Dark table */}
-          <Row className="mt-5">
-            <div className="col">
-              <Card className="bg-default shadow">
-                <CardHeader className="bg-transparent border-0">
-                  <h3 className="text-white mb-0">Card tables</h3>
-                </CardHeader>
-                <Table
-                  className="align-items-center table-dark table-flush"
-                  responsive
-                >
-                  <thead className="thead-dark">
-                    <tr>
-                      <th scope="col">Project</th>
-                      <th scope="col">Budget</th>
-                      <th scope="col">Status</th>
-                      <th scope="col">Users</th>
-                      <th scope="col">Completion</th>
-                      <th scope="col" />
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <ProductList></ProductList>
-                  </tbody>
-                </Table>
-              </Card>
-            </div>
-          </Row>
         </Container>
       </>
     );
   }
 }
 
-export default Tables;
+export default Orders;

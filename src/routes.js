@@ -17,10 +17,10 @@
 */
 import Index from "views/Index.js";
 import Profile from "views/examples/Profile.js";
-import Maps from "views/examples/Maps.js";
+import Orders from "views/examples/Orders.js";
 import Register from "views/examples/Register.js";
 import Login from "views/examples/Login.js";
-import Tables from "views/examples/Tables.js";
+import Products from "views/examples/Products.js";
 import Icons from "views/examples/Icons.js";
 
 var routes = [
@@ -46,17 +46,17 @@ var routes = [
     layout: "/admin"
   },
   {
-    path: "/tables",
+    path: "/products",
     name: "Products",
     icon: "ni ni-bullet-list-67 text-red",
-    component: Tables,
+    component: Products,
     layout: "/admin"
   },
   {
-    path: "/maps",
-    name: "Payments",
+    path: "/orders",
+    name: "Orders",
     icon: "ni ni-shop text-orange",
-    component: Maps,
+    component: Orders,
     layout: "/admin"
   },
   {
