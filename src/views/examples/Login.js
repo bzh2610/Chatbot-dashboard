@@ -23,7 +23,8 @@ import { Redirect } from "react-router-dom";
 import fetchApiKey from "components/Auth/apiKey.js";
 import generateId from "../../components/Auth/signup.js";
 
-
+//import { useHistory } from "react-router-dom";
+import { Router, browserHistory } from 'react-router'
 import { useAuth } from "../../context/auth";
 // reactstrap components
 import {
@@ -52,11 +53,12 @@ function Login(props){
   //Authentication router
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [redirect, setRedirect ] = useState(false);
   const [email, setEmail] = useState("test@example.com");
   const [password, setPassword] = useState("••••••••••");
   const { setAuthTokens } = useAuth();
 
-
+  const onLoad = false;
 /*
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -66,7 +68,7 @@ function Login(props){
 */
     useEffect(() => {
       fetchApiKey(apiKeyResponse);
-    });
+    }, [onLoad]);
 
  function apiKeyResponse(apiKey = null, error = null, message = null){
     if(error == null){
@@ -127,14 +129,19 @@ fetch("http://localhost:3000/v1/signup/basic", requestOptions)
 .then(
   (result) => {
 
+
+   
     if(result.statusCode === "10000"){ //Sign in OKAY
-
-      props.history.push('/admin/');
+      setAuthTokens("test");
+      setLoggedIn("true");
+      setRedirect(true);
+      
+     console.log(result.data);
     }else{ // Sign in failure
-
+      setsignInProgress(false);
     }
     
-   setsignInProgress(false);
+ 
   },
   // Note: it's important to handle errors here
   // instead of a catch() block so that we don't swallow
@@ -154,10 +161,11 @@ fetch("http://localhost:3000/v1/signup/basic", requestOptions)
     return <div>Error: {error.message}</div>;
   } else if (!isLoaded) {
     return <div>Loading...</div>;
-  } else {
+  } else if(redirect){
+    return  <Redirect to="/admin/index"/> 
+  }else {
   return (
       <>
-      
         <Col lg="5" md="7">
           <Card className="bg-secondary shadow border-0">
             <CardBody className="px-lg-5 py-lg-5">
