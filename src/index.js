@@ -53,6 +53,7 @@ function App(props) {
     <Switch>
       <PrivateRoute path="/admin" render={props => <AdminLayout {...props} />} />
       <Route path="/auth" render={props => <AuthLayout {...props} />} />
+      <Redirect from="/" to="/admin/index" />
     </Switch>
   </BrowserRouter>
   </AuthContext.Provider>

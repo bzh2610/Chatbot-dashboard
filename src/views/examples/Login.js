@@ -132,7 +132,8 @@ fetch("http://localhost:3000/v1/signup/basic", requestOptions)
 
    
     if(result.statusCode === "10000"){ //Sign in OKAY
-      setAuthTokens("test");
+      //console.log(result.data.tokens);
+      setAuthTokens(result.data.tokens.accessToken);
       setLoggedIn("true");
       setRedirect(true);
       
