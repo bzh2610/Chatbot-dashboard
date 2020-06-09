@@ -15,7 +15,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React, {useState, setState} from "react";
+import React, {useState, setState, useEffect} from "react";
 import ReactDOM from "react-dom";
 import { PushSpinner } from "react-spinners-kit";
 import { Redirect } from "react-router-dom";
@@ -23,6 +23,8 @@ import { Redirect } from "react-router-dom";
 import fetchApiKey from "components/Auth/apiKey.js";
 import generateId from "../../components/Auth/signup.js";
 
+
+import { useAuth } from "../../context/auth";
 // reactstrap components
 import {
   Button,
@@ -40,71 +42,70 @@ import {
 } from "reactstrap";
 
 
-class Login extends React.Component {
-  constructor(props) {
-    super(props);
-    
+function Login(props){
 
-    this.state = {
-      error: null,
-      isLoaded: false,
-      items: [],
-      email: "test@example.com",
-      password: "•••••••••",
-      apiKey: null,
-      signInProgress: false
-    };
+  const {error} = useState(null);
+  const [ apiKey, setApiKey ] = useState(null);
+
+  const [ isLoaded, setIsLoaded] = useState(false);
+  const [ signInProgress, setsignInProgress] = useState(false);
+  //Authentication router
+  const [isLoggedIn, setLoggedIn] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [email, setEmail] = useState("test@example.com");
+  const [password, setPassword] = useState("••••••••••");
+  const { setAuthTokens } = useAuth();
+
+
+/*
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.setApiKey = this.setApiKey.bind(this);
-  }
+    this.setApiKey = this.setApiKey.bind(this);  
+    //this.setAuthTokens = useAuth.bind(this);
+*/
+    useEffect(() => {
+      fetchApiKey(apiKeyResponse);
+    });
 
-  componentDidMount(){
-    fetchApiKey(this.setApiKey);
-  }
-
-  setApiKey(apiKey = null, error = null, message = null){
+ function apiKeyResponse(apiKey = null, error = null, message = null){
     if(error == null){
-      this.setState({
-        isLoaded: true,
-        apiKey: apiKey
-      });
+ 
+        setIsLoaded(true);
+        setApiKey(apiKey);
+    
     }else{
-      this.setState({
-        isLoaded: true,
-        error: error
-      });
+      setIsLoaded(true);
+//      this.setState({
+ //       isLoaded: true,
+ //       error: error
+  //    });
     }
   }
 
+  function handleEmailChange(event) {
+    setEmail(event.target.value);
+  }
 
-  handleInputChange(event) {
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
-
-    this.setState({
-      [name]: value
-    });
-    console.log(value)
+  function handlePwdChange(event) {
+    setPassword(event.target.value);
   }
 
 
-
-  handleSubmit(event){
-    this.setState({
-      signInProgress: true
-    })
+  function handleSubmit(event){
+    setsignInProgress(true);
+    //this.setState({
+    //  signInProgress: true
+    //})
     event.preventDefault();
 var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
-myHeaders.append("x-api-key", this.state.apiKey);
+myHeaders.append("x-api-key", apiKey);
 
 var raw = JSON.stringify({
   "name": "Sample user",
-  "email": this.state.email,
-  "password": this.state.password,
+  "email": email,
+  "password": password,
   "profilePicUrl": "https://avatar.lisk.ws/"+ generateId(32)
 });
 
@@ -117,6 +118,7 @@ var requestOptions = {
   redirect: 'follow'
 };
 
+
 fetch("http://localhost:3000/v1/signup/basic", requestOptions)
 .then(res => {
   console.log(res); //Status code can be retrieved here
@@ -124,41 +126,36 @@ fetch("http://localhost:3000/v1/signup/basic", requestOptions)
 })
 .then(
   (result) => {
-    this.setState({
-      signInProgress: false
-    });
 
     if(result.statusCode === "10000"){ //Sign in OKAY
 
+      props.history.push('/admin/');
     }else{ // Sign in failure
 
     }
-    this.props.history.push('/admin/');
+    
+   setsignInProgress(false);
   },
   // Note: it's important to handle errors here
   // instead of a catch() block so that we don't swallow
   // exceptions from actual bugs in components.
   (error) => {
-
+/*
     this.setState({
       error,
       signInProgress: false
-    });
+    });*/
   }
 )
 
   }
 
-
-  render() {
-    const { error, isLoaded, items } = this.state;
-    if (error) {
-      return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
-      return <div>Loading...</div>;
-    } else {
-
-    return (
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  } else if (!isLoaded) {
+    return <div>Loading...</div>;
+  } else {
+  return (
       <>
       
         <Col lg="5" md="7">
@@ -167,7 +164,7 @@ fetch("http://localhost:3000/v1/signup/basic", requestOptions)
               <div className="text-center text-muted mb-4">
                 <small>Sign in</small>
               </div>
-              <Form role="form" onSubmit={this.handleSubmit}>
+              <Form role="form" onSubmit={handleSubmit}>
                 <FormGroup className="mb-3">
                   <InputGroup className="input-group-alternative">
                     <InputGroupAddon addonType="prepend">
@@ -175,8 +172,8 @@ fetch("http://localhost:3000/v1/signup/basic", requestOptions)
                         <i className="ni ni-email-83" />
                       </InputGroupText>
                     </InputGroupAddon>
-                    <Input  onChange={this.handleInputChange}
-                      value={this.state.email}
+                    <Input  onChange={handleEmailChange}
+                      value={email}
                       name="email" placeholder="Email" type="email" autoComplete="new-email"/>
                   </InputGroup>
                 </FormGroup>
@@ -187,8 +184,8 @@ fetch("http://localhost:3000/v1/signup/basic", requestOptions)
                         <i className="ni ni-lock-circle-open" />
                       </InputGroupText>
                     </InputGroupAddon>
-                    <Input onChange={this.handleInputChange}
-                     value={this.state.password}
+                    <Input onChange={handlePwdChange}
+                     value={password}
                      name="password" placeholder="Password" type="password" autoComplete="new-password"/>
                   </InputGroup>
                 </FormGroup>
@@ -207,10 +204,10 @@ fetch("http://localhost:3000/v1/signup/basic", requestOptions)
                 </div>
                 <div className="text-center">
                   <Button className="my-4" color="primary" type="button"
-                  onClick={this.handleSubmit} >
+                  onClick={handleSubmit} >
                     Sign in
                   </Button>
-                  <PushSpinner loading={this.state.signInProgress} size={30} color="#686769"></PushSpinner>
+                  <PushSpinner loading={signInProgress} size={30} color="#686769"></PushSpinner>
 
                 </div>
               </Form>
@@ -240,6 +237,5 @@ fetch("http://localhost:3000/v1/signup/basic", requestOptions)
     );
     }
   }
-}
 
 export default Login;

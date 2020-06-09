@@ -33,6 +33,7 @@ class Admin extends React.Component {
     this.refs.mainContent.scrollTop = 0;
   }
   getRoutes = routes => {
+
     return routes.map((prop, key) => {
       if (prop.layout === "/admin") {
         return (
