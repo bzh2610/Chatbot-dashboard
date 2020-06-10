@@ -47,6 +47,8 @@ import {
 } from "variables/charts.js";
 
 import Header from "components/Headers/Header.js";
+//List items
+import HottestProductsRows from "components/AdminIndex/hottestProducts.js";
 
 class Index extends React.Component {
   constructor(props){
@@ -181,51 +183,7 @@ class Index extends React.Component {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th scope="row">iPad Pro 2020 128Gb gold</th>
-                      <td>4,569</td>
-                      <td>340</td>
-                      <td>
-                        <i className="fas fa-arrow-up text-success mr-3" />{" "}
-                        46,53%
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">IKEA lamp LIDARE</th>
-                      <td>3,985</td>
-                      <td>319</td>
-                      <td>
-                        <i className="fas fa-arrow-down text-warning mr-3" />{" "}
-                        46,53%
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">UE Boom bluetooth speaker</th>
-                      <td>3,513</td>
-                      <td>294</td>
-                      <td>
-                        <i className="fas fa-arrow-down text-warning mr-3" />{" "}
-                        36,49%
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">iPhone 11 64Gb</th>
-                      <td>2,050</td>
-                      <td>147</td>
-                      <td>
-                        <i className="fas fa-arrow-up text-success mr-3" />{" "}
-                        50,87%
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">ANKER External battery 20,000 mAh</th>
-                      <td>1,795</td>
-                      <td>190</td>
-                      <td>
-                        <i className="fas fa-arrow-down text-danger mr-3" />{" "}
-                        46,53%
-                      </td>
-                    </tr>
+                  <HottestProductsRows></HottestProductsRows>
                   </tbody>
                 </Table>
               </Card>
