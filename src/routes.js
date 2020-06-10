@@ -29,49 +29,56 @@ var routes = [
     name: "Dashboard",
     icon: "ni ni-tv-2 text-primary",
     component: Index,
-    layout: "/admin"
+    layout: "/admin",
+    showOnSideBar: true
   },
   {
     path: "/icons",
     name: "Chatbot",
     icon: "ni ni-planet text-blue",
     component: Icons,
-    layout: "/admin"
+    layout: "/admin",
+    showOnSideBar: true
   },
   {
     path: "/user-profile",
     name: "Clients",
     icon: "ni ni-single-02 text-yellow",
     component: Profile,
-    layout: "/admin"
+    layout: "/admin",
+    showOnSideBar: true
   },
   {
     path: "/products",
     name: "Products",
     icon: "ni ni-bullet-list-67 text-red",
     component: Products,
-    layout: "/admin"
+    layout: "/admin",
+    showOnSideBar: true
   },
   {
     path: "/orders",
     name: "Orders",
     icon: "ni ni-shop text-orange",
     component: Orders,
-    layout: "/admin"
+    layout: "/admin",
+    showOnSideBar: true
   },
   {
     path: "/login",
     name: "Safety",
-    icon: "ni ni-credit-card text-info",
+    icon: "ni ni-credit-card text-pink",
     component: Login,
-    layout: "/auth"
+    layout: "/auth",
+    showOnSideBar: false
   },
   {
     path: "/register",
     name: "Sign out",
-    icon: "ni ni-button-power text-pink",
+    icon: "ni ni-button-power text-info",
     component: Register,
-    layout: "/auth"
+    layout: "/auth",
+    showOnSideBar: true
   }
 ];
 export default routes;
