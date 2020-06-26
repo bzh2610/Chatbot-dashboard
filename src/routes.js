@@ -18,10 +18,12 @@
 import Index from "views/Index.js";
 import Profile from "views/examples/Profile.js";
 import Orders from "views/examples/Orders.js";
+import Order from "views/examples/Order.js";
 import Register from "views/examples/Register.js";
 import Login from "views/examples/Login.js";
 import Products from "views/examples/Products.js";
 import Icons from "views/examples/Icons.js";
+import Chatbot from "views/examples/Chatbot.js";
 
 var routes = [
   {
@@ -37,6 +39,14 @@ var routes = [
     name: "Chatbot",
     icon: "ni ni-planet text-blue",
     component: Icons,
+    layout: "/admin",
+    showOnSideBar: false
+  },
+  {
+    path: "/chatbot",
+    name: "Chatbot",
+    icon: "ni ni-planet text-blue",
+    component: Chatbot,
     layout: "/admin",
     showOnSideBar: true
   },
@@ -61,6 +71,14 @@ var routes = [
     name: "Orders",
     icon: "ni ni-shop text-orange",
     component: Orders,
+    layout: "/admin",
+    showOnSideBar: true
+  },
+  {
+    path: "/order",
+    name: "Order",
+    icon: "ni ni-shop text-orange",
+    component: Order,
     layout: "/admin",
     showOnSideBar: true
   },

@@ -246,16 +246,16 @@ function ProductList() {
             </DropdownToggle>
             <DropdownMenu className="dropdown-menu-arrow" right>
               <DropdownItem
-                href="/admin/order"
-                /*onClick={e => e.preventDefault()}*/
+                href="#pablo"
+                onClick={e => e.preventDefault()}
               >
-                View order
+                Action
         </DropdownItem>
               <DropdownItem
                 href="#pablo"
                 onClick={e => e.preventDefault()}
               >
-                Cancel
+                Another action
         </DropdownItem>
               <DropdownItem
                 href="#pablo"
@@ -276,19 +276,39 @@ function ProductList() {
 
 const darkMode = false;
 
-class Orders extends React.Component {
+class Order extends React.Component {
   render() {
     return (
       <>
-        <Header />
+        <Header/>
         {/* Page content */}
-        <Container className="mt--7" fluid>
+        <Container className="mt-7" fluid>
           {/* Table */}
           <Row>
+            
             <div className="col">
               <Card className={!darkMode ? "shadow" : "bg-default shadow"}>
                 <CardHeader className={!darkMode ? "border-0" : "bg-transparent border-0"}>
-                  <h3 className={!darkMode ? "mb-0" : "text-white mb-0"}>Orders</h3>
+                  <h3 className={!darkMode ? "mb-0" : "text-white mb-0"}>Order n°8912</h3>
+                  <div style={{display: 'inline-block', width: '50%', verticalAlign: 'top'}}>
+                  <p className="pt-4">
+                    <b>Sender :</b><br/>
+                    GAC,<br/>
+                    Mathildelaan 8<br/>
+                    5812KR TILBURG<br/>
+                    NETHERLANDS
+                  </p>
+                  </div>
+
+                  <div style={{display: 'inline-block', width: '50%'}}>
+                  <p className="pt-7">
+                    <b>Customer :</b><br/>
+                    John Doe,<br/>
+                    Kastanjelaan 1-12<br/>
+                    5616LH Eindhoven<br/>
+                    NETHERLANDS
+                  </p>
+                  </div>
                 </CardHeader>
                 <Table className={!darkMode ? "align-items-center table-flush" : "align-items-center table-dark table-flush"}
                   responsive>
@@ -368,4 +388,4 @@ class Orders extends React.Component {
   }
 }
 
-export default Orders;
+export default Order;
